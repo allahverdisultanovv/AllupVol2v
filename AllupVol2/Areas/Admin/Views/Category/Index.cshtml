@@ -1,0 +1,45 @@
+﻿@using AllupVol2.Areas.Admin.ViewModels
+@model List<GetCategoryVM>
+@{
+    int countC = 0;
+}
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">Categories</p>
+                <p class="card-description">
+                    <a asp-action="create" class="btn btn-success">Create Category</a>
+                </p>
+                <div class="table-responsive">
+                    <table id="recent-purchases-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Setttings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (GetCategoryVM category in Model)
+                            {
+                                countC++;
+                                <tr>
+                                    <td>@countC</td>
+                                    <td>@category.Name</td>
+
+                                    <td>
+                                        <a asp-action="delete" asp-route-id="@category.Id" class="btn btn-danger">Delete</a>
+                                        <a asp-action="update" asp-route-id="@category.Id" class="btn btn-warning">Update</a>
+                                        <a class="btn btn-primary">Detail</a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

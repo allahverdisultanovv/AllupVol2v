@@ -1,0 +1,48 @@
+﻿@using AllupVol2.Areas.Admin.ViewModels
+@model List<GetSlideVM>
+@{
+    int countS = 0;
+}
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">Slides</p>
+                <p class="card-description">
+                    <a asp-action="create" class="btn btn-success">Create Slide</a>
+                </p>
+                <div class="table-responsive">
+                    <table id="recent-purchases-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Order</th>
+                                <th>Setttings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (GetSlideVM slide in Model)
+                            {
+                                countS++;
+                                <tr>
+                                    <td>@countS</td>
+                                    <td><img src="~/assets/images/@slide.Image"/></td>
+                                    <td>@slide.Maintitle</td>
+                                    <td>@slide.Order</td>
+
+                                    <td>
+                                        <a asp-action="delete" asp-route-id="@slide.Id" class="btn btn-danger">Delete</a>
+                                        <a asp-action="update" asp-route-id="@slide.Id" class="btn btn-warning">Update</a>
+                                        <a class="btn btn-primary">Detail</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

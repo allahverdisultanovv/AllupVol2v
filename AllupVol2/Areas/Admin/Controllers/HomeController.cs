@@ -25,6 +25,7 @@ namespace AllupVol2.Areas.Admin.Controllers
                 productVMs = await _context.Products.Include(p => p.Category).Select(p => new GetProductVM() { Price = p.Price, Availability = p.Availability, Name = p.Name, Id = p.Id, CategoryName = p.Category.Name }).ToListAsync()
             };
             return View(vm);
+
         }
     }
 }
